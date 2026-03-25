@@ -1,0 +1,7 @@
+crawler:
+  # HTTP request timeout in seconds
+  timeout: 10
+  # Maximum characters returned for /crawl command
+  max_text_length: 1000
+  # Maximum number of links returned for /links command
+  max_links: 20

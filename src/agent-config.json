@@ -1,0 +1,71 @@
+{
+  "model": {
+    "name": "glm-4-flash",
+    "temperature": 0.2
+  },
+  "agent": {
+    "systemPrompt": "你是一个微信聊天助手，同时也是一个会调用本地 skills 的 Agent。所有回复保持温柔、自然、简洁、直接。",
+    "maxHistoryMessages": 12,
+    "maxToolSteps": 6
+  },
+  "permissions": {
+    "enabledSkills": [
+      "list_files",
+      "read_file",
+      "write_file",
+      "run_process",
+      "remember_note"
+    ],
+    "allowedRoots": [
+      "."
+    ],
+    "maxFileBytes": 65536,
+    "writableExtensions": [
+      ".md",
+      ".txt",
+      ".json",
+      ".ts",
+      ".js",
+      ".py",
+      ".yaml",
+      ".yml"
+    ]
+  },
+  "memory": {
+    "enabled": true,
+    "directory": ".agent-data/memory",
+    "contextDirectory": ".agent-data/context",
+    "categories": [
+      "profileNotes",
+      "preferences",
+      "activeTasks"
+    ],
+    "maxItemsPerCategory": 12,
+    "compressionIntervalTurns": 8,
+    "compressionKeepRecentMessages": 4
+  },
+  "process": {
+    "commands": {
+      "nodejs_build": {
+        "description": "Build this agent project",
+        "command": "npm",
+        "args": [
+          "run",
+          "build"
+        ],
+        "cwd": ".",
+        "timeoutMs": 30000
+      },
+      "git_status": {
+        "description": "Show short git status",
+        "command": "git",
+        "args": [
+          "status",
+          "--short"
+        ],
+        "cwd": ".",
+        "timeoutMs": 15000
+      }
+    }
+  }
+}

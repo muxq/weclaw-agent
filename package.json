@@ -1,0 +1,24 @@
+{
+  "name": "weclaw-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "tsx src/weclaw-agent.ts",
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "postinstall": "node scripts/repair-weixin-bot.mjs",
+    "start": "node dist/weclaw-agent.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@pinixai/weixin-bot": "^1.2.0"
+  }
+}
